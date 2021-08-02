@@ -58,7 +58,7 @@ const Sidebar = (props) => {
             <ListWrapper>
                 {
                     props.listItems && props.listItems.map((list) => (
-                        <Lisitem selectedId={id === list?.id} onClick={() => clickItem(list?.id , props)} key={list.id}><Icon as={list.icon} />{list.name}</Lisitem>
+                        <Lisitem selectedId={id === list?.id} onClick={() => clickItem(list?.id , props)} key={list.id}><Icon as={list?.icon ?? ''} />{list.name}</Lisitem>
                     ))
                 }
             </ListWrapper>

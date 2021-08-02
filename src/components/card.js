@@ -18,7 +18,6 @@ height:min-content;
 `
 
 const Card = (props) => {
-    console.log("🚀 ~ file: card.js ~ line 20 ~ Card ~ props", props.isBadgeClicked)
     const colorScheme = {
         new: "teal",
         paused: "orange",
@@ -35,7 +34,7 @@ const Card = (props) => {
                                 props.isBadgeClicked === campaign?.id ?
                                 <Stack mb="2" direction="row">
                                     {props.availableCampaignStatus && props.availableCampaignStatus.map((status, id) => (
-                                        <Badge cursor={'pointer'} key={id} onClick={() => props.onBadgeClick(status, campaign?.id)} borderRadius="full" px="2" colorScheme={colorScheme[status.toLowerCase()]}>
+                                        <Badge key={id} cursor={'pointer'} key={id} onClick={() => props.onBadgeClick(status, campaign?.id)} borderRadius="full" px="2" colorScheme={colorScheme[status.toLowerCase()]}>
                                             {status}
                                         </Badge>
                                     ))}
@@ -71,8 +70,8 @@ const Card = (props) => {
                             <Box m="3" as="hr" color="gray.600" fontSize="sm" />
                             <Box d="flex" flexWrap="wrap" gap="1rem">
                                 {
-                                    campaign?.campaign_type.map((type) => (
-                                        <Badge mb="2" mr="2" borderRadius="full" px="2" colorScheme="cyan">
+                                    campaign?.campaign_type.map((type , id) => (
+                                        <Badge key={id} mb="2" mr="2" borderRadius="full" px="2" colorScheme="cyan">
                                             {type}
                                         </Badge>
                                     ))
@@ -86,6 +85,12 @@ const Card = (props) => {
 
         </CardContainer>
     )
+}
+
+Card.defaultProps = {
+    onStatusChange: () => { },
+    onBadgeClick : () => {  },
+    listItems : []
 }
 
 export default Card
