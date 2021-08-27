@@ -34,7 +34,7 @@ const Card = (props) => {
                                 props.isBadgeClicked === campaign?.id ?
                                 <Stack mb="2" direction="row">
                                     {props.availableCampaignStatus && props.availableCampaignStatus.map((status, id) => (
-                                        <Badge key={id} cursor={'pointer'} key={id} onClick={() => props.onBadgeClick(status, campaign?.id)} borderRadius="full" px="2" colorScheme={colorScheme[status.toLowerCase()]}>
+                                        <Badge cursor={'pointer'} key={id} onClick={() => props.onBadgeClick(status, campaign?.id)} borderRadius="full" px="2" colorScheme={colorScheme[status.toLowerCase()]}>
                                             {status}
                                         </Badge>
                                     ))}
